@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <template id="website_bom_product" inherit_id="website_sale.cart_lines" name="Bom Products">
+            <xpath expr="//td[has class('td-product_name')]" position="inside">
+                <t t-foreach="products" t-as="res">
+                    <t t-if="line.product_template_id.id == res">
+                        <t t-foreach="line.product_template_id.bom_ids.bom_line_ids.product_id" t-as="res1">
+                                <t t-esc="res1.name"/>
+                        </t>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>
